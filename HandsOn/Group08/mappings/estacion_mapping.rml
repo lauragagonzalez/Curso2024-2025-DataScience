@@ -6,8 +6,9 @@
 @prefix map: <http://mapping.example.com/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix sd: <http://www.w3.org/ns/sparql-service-description#> .
-@prefix base: <http://websemantica/base#> .
+@prefix base: <https://www.dominiowebsemant.com/> .
 @prefix ns: <https://www.dominiowebsemant.com/ontology/CercaniasMalaga#> .
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
 
 map:jc_000 rr:child "CÓDIGO" ;
 	rr:parent "CODIGO_ESTACION" .
@@ -71,7 +72,7 @@ map:om_004 rml:reference "DESCRIPCION" ;
 	rr:termType rr:Literal .
 
 map:om_005 rdf:type rr:ObjectMap ;
-	rr:template "http://websemantica/base#Direccion/{CÓDIGO}" ;
+	rr:template "https://www.dominiowebsemant.com/resource/Direccion/{CÓDIGO}" ;
 	rr:termType rr:IRI .
 
 map:om_006 rdf:type rr:ObjectMap ;
@@ -91,7 +92,7 @@ map:om_009 rml:reference "DIRECCIÓN 1" ;
 	rr:termType rr:Literal .
 
 map:om_010 rdf:type rr:ObjectMap ;
-	rr:template "http://websemantica/base#CodigoPostal/{C.P.}" ;
+	rr:template "https://www.dominiowebsemant.com/resource/CodigoPostal/{C.P.}" ;
 	rr:termType rr:IRI .
 
 map:om_011 rdf:type rr:ObjectMap ;
@@ -103,7 +104,7 @@ map:om_012 rml:reference "POBLACION" ;
 	rr:termType rr:Literal .
 
 map:om_013 rdf:type rr:ObjectMap ;
-	rr:template "http://websemantica/base#Direccion/{CÓDIGO}" ;
+	rr:template "https://www.dominiowebsemant.com/resource/Direccion/{CÓDIGO}" ;
 	rr:termType rr:IRI .
 
 map:om_014 rdf:type rr:ObjectMap ;
@@ -125,7 +126,7 @@ map:om_017 rml:reference "VIAJEROS_BAJADOS" ;
 	rr:termType rr:Literal .
 
 map:om_018 rdf:type rr:ObjectMap ;
-	rr:template "http://websemantica/base#Estacion/{CODIGO_ESTACION}" ;
+	rr:template "https://www.dominiowebsemant.com/resource/Estacion/{CODIGO_ESTACION}" ;
 	rr:termType rr:IRI .
 
 map:om_019 rdf:type rr:ObjectMap ;
@@ -137,7 +138,7 @@ map:om_020 rml:reference "PROVINCIA" ;
 	rr:termType rr:Literal .
 
 map:om_021 rdf:type rr:ObjectMap ;
-	rr:template "http://websemantica/base#Poblacion/{POBLACION}" ;
+	rr:template "https://www.dominiowebsemant.com/resource/Poblacion/{POBLACION}" ;
 	rr:termType rr:IRI .
 
 map:om_022 rdf:type rr:ObjectMap ;
@@ -151,10 +152,10 @@ map:pm_001 rdf:type rr:PredicateMap ;
 	rr:constant ns:codigoEstacion .
 
 map:pm_002 rdf:type rr:PredicateMap ;
-	rr:constant ns:latitud .
+	rr:constant geo:lat .
 
 map:pm_003 rdf:type rr:PredicateMap ;
-	rr:constant ns:longitud .
+	rr:constant geo:long .
 
 map:pm_004 rdf:type rr:PredicateMap ;
 	rr:constant ns:nombreEstacion .
@@ -309,29 +310,29 @@ map:rules_000 <http://rdfs.org/ns/void#exampleResource> map:map_direccion_mappin
 	rdf:type <http://rdfs.org/ns/void#Dataset> .
 
 map:s_000 rdf:type rr:SubjectMap ;
-	rr:template "http://websemantica/base#Estacion/{CÓDIGO}~iri" .
+	rr:template "https://www.dominiowebsemant.com/resource/Estacion/{CÓDIGO}" .
 
 map:s_001 rdf:type rr:SubjectMap ;
-	rr:template "http://websemantica/base#Nucleo/{NUCLEO_CERCANIAS}~iri" .
+	rr:template "https://www.dominiowebsemant.com/resource/Nucleo/{NUCLEO_CERCANIAS}" .
 
 map:s_002 rdf:type rr:SubjectMap ;
-	rr:template "http://websemantica/base#Direccion/{CÓDIGO}~iri" .
+	rr:template "https://www.dominiowebsemant.com/resource/Direccion/{CÓDIGO}" .
 
 map:s_003 rdf:type rr:SubjectMap ;
-	rr:template "http://websemantica/base#Poblacion/{POBLACION}~iri" .
+	rr:template "https://www.dominiowebsemant.com/resource/Poblacion/{POBLACION}" .
 
 map:s_004 rdf:type rr:SubjectMap ;
-	rr:template "http://websemantica/base#Tramo/{TRAMO_ID}~iri" .
+	rr:template "https://www.dominiowebsemant.com/resource/Tramo/{TRAMO_ID}" .
 
 map:s_005 rdf:type rr:SubjectMap ;
-	rr:template "http://websemantica/base#Provincia/{POBLACION}~iri" .
+	rr:template "https://www.dominiowebsemant.com/resource/Provincia/{POBLACION}" .
 
 map:source_000 rml:referenceFormulation ql:CSV ;
 	rml:source "estaciones_updated.csv" ;
 	rdf:type rml:LogicalSource .
 
 map:source_001 rml:referenceFormulation ql:CSV ;
-	rml:source "malaga_viajeros_por_franja_csv.csv" ;
+	rml:source "malaga-viajeros-por-franja-csv.-updated.csv" ;
 	rdf:type rml:LogicalSource .
 
 map:source_002 rml:referenceFormulation ql:CSV ;
@@ -343,7 +344,7 @@ map:source_003 rml:referenceFormulation ql:CSV ;
 	rdf:type rml:LogicalSource .
 
 map:source_004 rml:referenceFormulation ql:CSV ;
-	rml:source "malaga_viajeros_por_franja_csv.csv" ;
+	rml:source "malaga-viajeros-por-franja-csv.-updated.csv" ;
 	rdf:type rml:LogicalSource .
 
 map:source_005 rml:referenceFormulation ql:CSV ;
